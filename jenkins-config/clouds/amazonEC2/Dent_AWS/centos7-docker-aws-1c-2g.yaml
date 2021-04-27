@@ -1,0 +1,6 @@
+---
+templates:
+- ami: "ami-0a15b7d6f8805b614"
+  description: "prd-centos7-docker-aws-1c-2g"
+  labelString: "centos7-docker-aws-1c-2g"
+  type: T2Xlarge
