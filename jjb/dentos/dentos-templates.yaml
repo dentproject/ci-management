@@ -82,6 +82,9 @@
     <<: *lf_dentos_common
 
     build-args: ""
+    cron: "@daily"
+    github_included_regions:
+      - ".*"
 
     scm:
       - lf-infra-github-scm:
@@ -104,14 +107,21 @@
               variable: DENTOSUSER
 
     triggers:
+      - timed: "{obj:cron}"
+      - github
+      - pollscm:
+          cron: ""
       - github-pull-request:
-          trigger-phrase: "^(remerge)$"
-          only-trigger-phrase: false
+          trigger-phrase: "^remerge$"
+          only-trigger-phrase: true
           status-context: "DentOS merge"
           permit-all: true
           github-hooks: true
+          org-list:
+            - "{github-org}"
           white-list-target-branches:
             - "{branch}"
+          included-regions: "{obj:github_included_regions}"
 
     builders:
       - shell: !include-raw-escape: ../../shell/dentos-build.sh
