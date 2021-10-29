@@ -23,6 +23,10 @@ repos:
     rev: v1.26.1
     hooks:
       - id: yamllint
+        exclude: >
+          (?x)^(
+            packer/provision/local-docker.yaml
+          )$
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: 2.1.5
@@ -31,5 +35,6 @@ repos:
         exclude: >
           (?x)^(
             jenkins-config/global-vars-production.sh|
-            jenkins-config/global-vars-sandbox.sh
+            jenkins-config/global-vars-sandbox.sh|
+            packer/provision/local-docker.yaml
           )$
