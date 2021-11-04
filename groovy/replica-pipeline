@@ -1,0 +1,39 @@
+#!/bin/groovy
+
+def GIT_URL = "https://github.com/sartura/replica.git"
+
+pipeline{
+  agent{
+      label "centos7-docker-aws-1c-2g"
+  }
+  stages{
+    stage("Prepate Env"){
+      steps{
+        script{
+          echo "Clone Sources"
+          checkout(
+            changelog: false,
+            poll: false,
+            scm: [$class: 'GitSCM',
+                  branches: [[name: "${sha1}"]],
+                  doGenerateSubmoduleConfigurations: false,
+                  extensions: [],
+                  submoduleCfg: [],
+                  userRemoteConfigs: [[refspec: '+refs/pull/*:refs/remotes/origin/pr/*', url: GIT_URL]]]
+          )
+        }
+      }
+    }
+    stage("Run make"){
+      environment{
+        GO111MODULE = "on"
+      }
+      steps{
+        script{
+          echo "Run make"
+          sh "make DOCKER_BUILDKIT=1 CTARGET=${env.TUPLE} package_${env.TARGET}"
+        }
+      }
+    }
+  }
+}

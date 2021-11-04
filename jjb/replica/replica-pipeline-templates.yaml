@@ -1,0 +1,85 @@
+---
+####################
+# COMMON FUNCTIONS #
+####################
+
+- replica_pipeline_common: &replica_pipeline_common
+    name: replica-pipeline-common
+
+    ######################
+    # Default parameters #
+    ######################
+
+    branch: master
+
+    #####################
+    # Job Configuration #
+    #####################
+
+    project-type: pipeline
+    node: "{build-node}"
+    disabled: false
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: 7
+
+    parameters:
+      - lf-infra-parameters:
+          project: "{project}"
+          branch: "{branch}"
+          refspec: "refs/heads/{branch}"
+          stream: "{stream}"
+      - string:
+          name: BUILD_ARGS
+          default: "{build-args}"
+          description: |
+            Options to pass to build.sh.
+            Example: -j8 all
+      - string:
+          name: TUPLE
+          default: "{tuple}"
+          description: |
+            Short string describing the toolchain and system combination.
+            Example: armv7a-unknown-linux-gnueabihf
+      - string:
+          name: TARGET
+          default: "{target}"
+          description: |
+            target name represented by a targets/<target>.docker file
+            Example: toolchain
+
+#################
+# JOB TEMPLATES #
+#################
+- job-template:
+    name: "{project-name}-verify-{stream}-{target}-{tuple}"
+    id: github-replica-verify
+    description: "Job template for replica verify pipeline jobs"
+    <<: *replica_pipeline_common
+
+    build-args: ""
+    concurrent: true
+    tuple: ""
+    target: ""
+
+    properties:
+      - github:
+          url: "https://github.com/{github-org}/{project}"
+          display-name: "Replica"
+
+    triggers:
+      - github-pull-request:
+          github-hooks: true
+          trigger-phrase: "^(recheck|reverify)$"
+          skip-build-phrase: '.*\[WIP\].*'
+          permit-all: true
+          status-context: "Jenkins Replica Verify"
+          triggered-status: "Build is triggered"
+          started-status: "Build is started"
+          success-status: "Tests successfully passed."
+          error-status: "Pipeline execution failed due to technical issue."
+          failure-status: "Pipeline execution failed due to technical issue."
+          cancel-builds-on-update: true
+
+    dsl: !include-raw-escape: ../../groovy/replica-pipeline
