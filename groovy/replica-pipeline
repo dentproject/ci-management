@@ -31,6 +31,8 @@ pipeline{
       steps{
         script{
           echo "Run make"
+          sh "sudo setenforce permissive"
+          sh "git submodule update --init --recursive --depth 1"
           sh "make DOCKER_BUILDKIT=1 CTARGET=${env.TUPLE} package_${env.TARGET}"
         }
       }
