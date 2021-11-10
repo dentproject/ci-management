@@ -7,7 +7,7 @@
 
 - project:
     name: dentos-verify
-    build-node: centos7-docker-aws-1c-2g
+    build-node: prd-ubuntu-docker-aws-1c-2g
     project-name: dentos
     project: dentOS
     mvn-settings: dentos-settings
