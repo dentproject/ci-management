@@ -10,7 +10,7 @@
     # Default parameters #
     ######################
 
-    branch: master
+    branch: main
 
     #####################
     # Job Configuration #
