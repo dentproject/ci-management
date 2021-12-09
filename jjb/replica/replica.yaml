@@ -5,8 +5,8 @@
     project-name: replica
     build-node: centos7-docker-aws-1c-2g
     github-org: sartura
-    stream: "master"
-    branch: "master"
+    stream: "main"
+    branch: "main"
 
 # Main view
 - project:

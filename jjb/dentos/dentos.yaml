@@ -13,8 +13,6 @@
     mvn-settings: dentos-settings
     jenkins-ssh-release-credential: dent
     stream:
-      - "master":
-          branch: "master"
       - "main":
           branch: "main"
 
@@ -25,16 +23,3 @@
           build-timeout: 270
       - "{project-name}-github-release-jobs":
           branch: master
-
-- project:
-    name: dentos-whitesource
-    project-name: dentos
-    build-node: centos7-docker-aws-1c-2g
-    jobs:
-      - github-whitesource-scan
-    wss-product-name: dentOS
-    submodule-disable: true
-    mvn-clean-install: false
-    mvn-settings: dentos-settings
-    project: dentOS
-    branch: master
