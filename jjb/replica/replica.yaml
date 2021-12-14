@@ -22,42 +22,42 @@
     target: toolchain
     tuple: armv7a-unknown-linux-gnueabihf
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-toolchain-aarch64-unknown-linux-gnu
     defaults: replica-defaults
     target: toolchain
     tuple: aarch64-unknown-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-toolchain-x86_64-multilib-linux-gnu
     defaults: replica-defaults
     target: toolchain
     tuple: x86_64-multilib-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-toolchain-armv7a-unknown-linux-musleabihf
     defaults: replica-defaults
     target: toolchain
     tuple: armv7a-unknown-linux-musleabihf
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-toolchain-aarch64-unknown-linux-musl
     defaults: replica-defaults
     target: toolchain
     tuple: aarch64-unknown-linux-musl
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-toolchain-x86_64-multilib-linux-musl
     defaults: replica-defaults
     target: toolchain
     tuple: x86_64-multilib-linux-musl
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 
 # Device targets
 - project:
@@ -66,56 +66,56 @@
     target: tn48m
     tuple: aarch64-unknown-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-tn4810m-aarch64-unknown-linux-gnu
     defaults: replica-defaults
     target: tn4810m
     tuple: aarch64-unknown-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-tx4810-aarch64-unknown-linux-gnu
     defaults: replica-defaults
     target: tx4810
     tuple: x86_64-multilib-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-as5114-48x-aarch64-unknown-linux-gnu
     defaults: replica-defaults
     target: as5114-48x
     tuple: aarch64-unknown-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-rpi4-aarch64-unknown-linux-gnu
     defaults: replica-defaults
     target: rpi4
     tuple: aarch64-unknown-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-sn2010-x86_64-multilib-linux-gnu
     defaults: replica-defaults
     target: sn2010
     tuple: x86_64-multilib-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-ecw5211-l-t-armv7a-unknown-linux-gnueabihf
     defaults: replica-defaults
     target: ecw5211-l-t
     tuple: armv7a-unknown-linux-gnueabihf
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-methode-udpu-aarch64-unknown-linux-gnu
     defaults: replica-defaults
     target: methode-udpu
     tuple: aarch64-unknown-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 
 # Generic targets
 - project:
@@ -124,21 +124,21 @@
     target: vmlinux
     tuple: armv7a-unknown-linux-gnueabihf
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-vmlinux-aarch64-unknown-linux-gnu
     defaults: replica-defaults
     target: vmlinux
     tuple: aarch64-unknown-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-vmlinux-x86_64-multilib-linux-gnu
     defaults: replica-defaults
     target: vmlinux
     tuple: x86_64-multilib-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 
 # System targets
 - project:
@@ -147,42 +147,42 @@
     target: system
     tuple: armv7a-unknown-linux-gnueabihf
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-system-aarch64-unknown-linux-gnu
     defaults: replica-defaults
     target: system
     tuple: aarch64-unknown-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-system-x86_64-multilib-linux-gnu
     defaults: replica-defaults
     target: system
     tuple: x86_64-multilib-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-system-armv7a-unknown-linux-musleabihf
     defaults: replica-defaults
     target: system
     tuple: armv7a-unknown-linux-musleabihf
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-system-aarch64-unknown-linux-musl
     defaults: replica-defaults
     target: system
     tuple: aarch64-unknown-linux-musl
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 - project:
     name: replica-system-x86_64-multilib-linux-musl
     defaults: replica-defaults
     target: system
     tuple: x86_64-multilib-linux-musl
     jobs:
-      - github-replica-verify
+      - github-replica-daily
 
 # Package targets
 - project:
@@ -191,4 +191,4 @@
     target: package
     tuple: aarch64-unknown-linux-gnu
     jobs:
-      - github-replica-verify
+      - github-replica-daily
