@@ -53,9 +53,9 @@
 # JOB TEMPLATES #
 #################
 - job-template:
-    name: "{project-name}-verify-{stream}-{target}-{tuple}"
-    id: github-replica-verify
-    description: "Job template for replica verify pipeline jobs"
+    name: "{project-name}-daily-{stream}-{target}-{tuple}"
+    id: github-replica-daily
+    description: "Job template for daily replica pipeline jobs"
     <<: *replica_pipeline_common
 
     build-args: ""
@@ -69,17 +69,6 @@
           display-name: "Replica"
 
     triggers:
-      - github-pull-request:
-          github-hooks: true
-          trigger-phrase: "^(recheck|reverify)$"
-          skip-build-phrase: '.*\[WIP\].*'
-          permit-all: true
-          status-context: "Jenkins Replica Verify"
-          triggered-status: "Build is triggered"
-          started-status: "Build is started"
-          success-status: "Tests successfully passed."
-          error-status: "Pipeline execution failed due to technical issue."
-          failure-status: "Pipeline execution failed due to technical issue."
-          cancel-builds-on-update: true
+      - timed: "H H * * 6"
 
     dsl: !include-raw-escape: ../../groovy/replica-pipeline
