@@ -8,4 +8,6 @@ RELEASE_EMAIL=collab-it+dent-release@linuxfoundation.org
 RELEASE_USERNAME=dent-release
 S3_BUCKET=dent-logs-s3-cloudfront-index
 CDN_URL=logs.dent.dev
+SIGUL_BRIDGE_IP=44.232.126.158
+SIGUL_KEY=dent-release-2021
 SILO=production
