@@ -24,6 +24,10 @@
     # default pr_admin_list to LF RelEng lead
     github_pr_admin_list:
       - jwagantall
+    github_pr_allowlist:
+      - jwagantall
+      - mightynerderic
+      - askb
 
     # lf-infra defaults
     lftools-version: <1.0.0
