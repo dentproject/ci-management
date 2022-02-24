@@ -15,6 +15,8 @@
     stream:
       - "main":
           branch: "main"
+      - "2.x":
+          branch: "2.x"          
 
     jobs:
       - github-dentos-verify:
