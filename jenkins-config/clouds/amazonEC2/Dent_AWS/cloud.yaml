@@ -1,0 +1,8 @@
+---
+jenkins:
+  clouds:
+    - nomad:
+        cloudName: "Dent_AWS"
+        credentialsId: "dent-ci-user"
+        region: "us-west-2"
+        templates:

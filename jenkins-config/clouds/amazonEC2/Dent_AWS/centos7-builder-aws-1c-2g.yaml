@@ -1,0 +1,6 @@
+---
+templates:
+- ami: "ami-0e1e51373b3354985"
+  description: "prd-centos7-builder-aws-1c-2g"
+  labelString: "centos7-builder-aws-1c-2g"
+  type: T2Small

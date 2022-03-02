@@ -1,0 +1,35 @@
+---
+templates:
+    amiType:
+      unixData:
+        sshPort: "22"
+    associatePublicIp: false
+    connectBySSHProcess: false
+    connectionStrategy: PRIVATE_IP
+    customDeviceMapping: "/dev/sda1=:120"
+    deleteRootOnTermination: true
+    ebsOptimized: false
+    hostKeyVerificationStrategy: CHECK_NEW_SOFT
+    idleTerminationMinutes: "1"
+    launchTimeoutStr: "300"
+    maxTotalUses: 1
+    minimumNumberOfInstances: 0
+    minimumNumberOfSpareInstances: 0
+    mode: NORMAL
+    monitoring: false
+    numExecutors: 6
+    remoteAdmin: "jenkins"
+    remoteFS: "/w"
+    securityGroups: "sg-06f0607f929dc45b9"
+    stopOnTerminate: false
+    subnetId: "subnet-00a2b85e516c375c9"
+    t2Unlimited: false
+    useDedicatedTenancy: false
+    useEphemeralDevices: false
+    userData: |-
+      #!/bin/bash
+
+      echo '---> Starting user data init script <---'
+      mkdir /opt/ciman
+      git clone --recurse-submodules https://github.com/lfit/releng-global-jjb.git /opt/ciman/global-jjb
+      /opt/ciman/global-jjb/jenkins-init-scripts/init.sh
