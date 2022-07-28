@@ -34,7 +34,7 @@ pipeline{
           echo "Run make"
           sh "sudo setenforce permissive"
           sh "git submodule update --init --recursive --depth 1"
-          sh "make GENTOO_MIRRORS=\"${GENTOO_MIRRORS}\" DOCKER_BUILDKIT=1 CTARGET=${env.TUPLE} package_${env.TARGET}"
+          sh "make GENTOO_MIRRORS=\"${GENTOO_MIRRORS}\" DOCKER_BUILDKIT=1 CTARGET=${env.TUPLE} package_${env.TARGET} "
         }
       }
     }
