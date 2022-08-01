@@ -3,6 +3,8 @@
 def GIT_URL = "https://github.com/sartura/replica.git"
 def GENTOO_MIRRORS = "http://mirror.netcologne.de/gentoo/ http://distfiles.gentoo.org"
 
+loadGlobalLibrary()
+
 pipeline{
   agent{
       label "centos7-docker-aws-1c-2g"
@@ -39,4 +41,26 @@ pipeline{
       }
     }
   }
+  post {
+      always {
+          // The default logSettingsFile is "jenkins-log-archives-settings".
+          // If this file isn't present, a different value for logSettingsFile
+          // will need to be passed to lfInfraShipLogs.
+          //lfInfraShipLogs(logSettingsFile = "jenkins-s3-log-ship")
+      }
+   }
+}
+def loadGlobalLibrary(branch = "*/master") {
+    library(identifier: "pipelines@master",
+        retriever: legacySCM([
+            $class: "GitSCM",
+            userRemoteConfigs: [[url: "https://github.com/lfit/releng-pipelines"]],
+            branches: [[name: branch]],
+            doGenerateSubmoduleConfigurations: false,
+            extensions: [[
+                $class: "SubmoduleOption",
+                recursiveSubmodules: true,
+            ]]]
+        )
+    )
 }
