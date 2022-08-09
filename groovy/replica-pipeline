@@ -41,14 +41,14 @@ pipeline{
       }
     }
   }
-  post {
-      always {
+  //post {
+      //always {
           // The default logSettingsFile is "jenkins-log-archives-settings".
           // If this file isn't present, a different value for logSettingsFile
           // will need to be passed to lfInfraShipLogs.
           //lfInfraShipLogs(logSettingsFile = "jenkins-s3-log-ship")
-      }
-   }
+      //}
+   //}
 }
 def loadGlobalLibrary(branch = "*/master") {
     library(identifier: "pipelines@master",
