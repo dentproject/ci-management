@@ -7,7 +7,7 @@ loadGlobalLibrary()
 
 pipeline{
   agent{
-      label "centos7-docker-aws-1c-2g"
+      label "centos7-docker-aws-8c-32g"
   }
   stages{
     stage("Prepate Env"){
