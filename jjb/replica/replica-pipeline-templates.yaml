@@ -18,7 +18,7 @@
 
     project-type: pipeline
     node: "{build-node}"
-    disabled: false
+    disabled: true
 
     properties:
       - lf-infra-properties:
