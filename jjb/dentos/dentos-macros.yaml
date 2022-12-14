@@ -74,3 +74,14 @@
     wrappers:
       - infra-wrappers-common:
           build-timeout: "{build-timeout}"
+
+- wrapper:
+    name: infra-wrappers-common
+    wrappers:
+      - mask-passwords
+      - timeout:
+          type: absolute
+          timeout: "{build-timeout}"
+          timeout-var: "BUILD_TIMEOUT"
+          fail: true
+      - timestamps
