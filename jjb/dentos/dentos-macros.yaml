@@ -6,7 +6,7 @@
     name: infra-sysstat
     builders:
       - shell: !include-raw:
-          - ../shell/sysstat.sh
+          - ../../shell/sysstat.sh
 ##############
 # PUBLISHERS #
 ##############
