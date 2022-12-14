@@ -51,3 +51,5 @@
     submodule-disable: false
     submodule-timeout: 10
 
+    # Jenkins
+    jenkins-ssh-credential: "dent-jenkins-ssh"
