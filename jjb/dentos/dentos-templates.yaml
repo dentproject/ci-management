@@ -38,6 +38,7 @@
     wrappers:
       - infra-wrappers:
           build-timeout: "{build-timeout}"
+          jenkins-ssh-credential: "{jenkins-ssh-credential}"
 
     publishers:
       - infra-publish
@@ -97,6 +98,7 @@
     wrappers:
       - infra-wrappers:
           build-timeout: "{build-timeout}"
+          jenkins-ssh-credential: "{jenkins-ssh-credential}"
 
     triggers:
       - timed: "{obj:cron}"

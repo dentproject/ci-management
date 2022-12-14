@@ -70,12 +70,6 @@
 
 
 - wrapper:
-    name: infra-wrappers
-    wrappers:
-      - infra-wrappers-common:
-          build-timeout: "{build-timeout}"
-
-- wrapper:
     name: infra-wrappers-common
     wrappers:
       - mask-passwords
@@ -85,3 +79,18 @@
           timeout-var: "BUILD_TIMEOUT"
           fail: true
       - timestamps
+
+- wrapper:
+    name: infra-wrappers
+    wrappers:
+      - infra-wrappers-common:
+          build-timeout: "{build-timeout}"
+      - config-file-provider:
+          files:
+            - file-id: npmrc
+              target: "$HOME/.npmrc"
+            - file-id: pipconf
+              target: "$HOME/.config/pip/pip.conf"
+      - ssh-agent-credentials:
+          users:
+            - "{jenkins-ssh-credential}"
