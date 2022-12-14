@@ -19,10 +19,4 @@ sudo apt-get install -y binfmt-support
 #bash tools/autobuild/build.sh -9 -b $STREAM ${BUILD_ARGS:-}
 make docker
 
-# Push artifact for the merge job
-if [[ "$JOB_NAME" =~ "merge" ]]; then
-    find "${WORKSPACE}"/builds/amd64/installer/installed/builds/stretch/ -name '*' -type f -exec curl -u "${DENTOSUSER}" -T {} https://nexus.dent.dev/content/repositories/snapshots/org/dent/dentos/ \;
-    find "${WORKSPACE}"/builds/arm64/installer/installed/builds/stretch/ -name '*' -type f -exec curl -u "${DENTOSUSER}" -T {} https://nexus.dent.dev/content/repositories/snapshots/org/dent/dentos/ \;
-fi
-
 echo "---> dentos-build.sh ends"
