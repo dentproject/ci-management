@@ -33,7 +33,7 @@
                 - infra-sysstat
           mark-unstable-if-failed: true
       - archive:
-          artifacts: 'builds/amd64/installer/installed/builds/stretch/**'
+          artifacts: 'builds/amd64/installer/installed/builds/stretch/**,builds/arm64/installer/installed/builds/stretch/**'
           allow-empty: 'true'
           fingerprint: true
           default-excludes: false
