@@ -15,7 +15,9 @@ echo "---> dentos-build.sh"
 set -eux -o pipefail
 
 sudo apt-get update
-sudo apt-get install -y binfmt-support
+sudo apt-get install -y binfmt-support sysstat
+sudo systemctl start sysstat
+sudo systemctl enable sysstat
 # Build issue under investigation, commenting for now...
 #bash tools/autobuild/build.sh -9 -b $STREAM ${BUILD_ARGS:-}
 make docker

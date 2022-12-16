@@ -16,38 +16,6 @@ if awk -F/ '$2 == "docker"' /proc/self/cgroup | read -r; then
 fi
 
 
-OS=$(facter operatingsystem)
-case "$OS" in
-    Ubuntu)
-        os_release=$(facter operatingsystemrelease)
-        case $os_release in
-            16.04|18.04|20.04)
-                if ! systemctl status sysstat > /dev/null; then
-                    exit 0
-                fi
-                ;;
-            14.04)
-                if [[ ! -f /etc/default/sysstat ]] || \
-                        ! grep --quiet 'ENABLED="true"' /etc/default/sysstat; then
-                    exit 0
-                fi
-                ;;
-            *)
-                echo "ERROR: Unknown Release: Ubuntu $os_release"
-                exit 1
-                ;;
-        esac
-        SYSSTAT_PATH="/var/log/sysstat"
-    ;;
-    CentOS|RedHat)
-        SYSSTAT_PATH="/var/log/sa"
-    ;;
-    *)
-        # nothing to do
-        exit 0
-    ;;
-esac
-
 SAR_DIR="$WORKSPACE/archives/sar-reports"
 mkdir -p "$SAR_DIR"
 cp "$SYSSTAT_PATH/"* "$_"
