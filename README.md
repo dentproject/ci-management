@@ -28,7 +28,7 @@ Get support by [submitting a ticket](https://support.servanamanaged.com/support/
 | Uptime                         | 99%             |
 | Contact Method                 | Email, Website  |
 | Multi-Region Disaster Recovery | 8hrs            |
-|
+
 
 ## Access/Signup to Jenkins:
 
