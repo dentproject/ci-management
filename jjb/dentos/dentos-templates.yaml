@@ -99,6 +99,10 @@
       - infra-wrappers:
           build-timeout: "{build-timeout}"
           jenkins-ssh-credential: "{jenkins-ssh-credential}"
+      - credentials-binding:
+          - username-password:
+              credential-id: artifactory
+              variable: NEXUS_CREDS
 
     triggers:
       - timed: "{obj:cron}"

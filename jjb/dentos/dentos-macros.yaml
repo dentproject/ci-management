@@ -7,6 +7,12 @@
     builders:
       - shell: !include-raw:
           - ../../shell/sysstat.sh
+- builder:
+    name: upload-artifacts
+    builders:
+      - shell: !include-raw:
+          - ../../shell/upload-artifacts.sh
+
 ##############
 # PUBLISHERS #
 ##############
@@ -32,11 +38,14 @@
               build-steps:
                 - infra-sysstat
           mark-unstable-if-failed: true
-      - archive:
-          artifacts: 'builds/amd64/installer/installed/builds/stretch/**,builds/arm64/installer/installed/builds/stretch/**'
-          allow-empty: 'true'
-          fingerprint: true
-          default-excludes: false
+      - postbuildscript:
+          builders:
+            - role: BOTH
+              build-on:
+                - SUCCESS
+              build-steps:
+                - upload-artifacts
+          mark-unstable-if-failed: true
       - workspace-cleanup:
           exclude:
             # Do not clean up *.jenkins-trigger files for jobs that use a
