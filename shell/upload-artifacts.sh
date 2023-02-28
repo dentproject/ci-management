@@ -15,7 +15,7 @@ upload_file() {
             echo "File upload failed with HTTP status code $response."
             if ((i < max_retries)); then
                 echo "Retrying in $retry_interval seconds..."
-                sleep $retry_interval
+                sleep "$retry_interval"
             fi
         fi
     done
@@ -34,7 +34,7 @@ retry_interval=5
 # Loop through all directories provided as arguments
 for dir in "${directories[@]}"; do
         # Loop through all files in the current directory that match the pattern
-        for file in $(find "$dir" -type f -name $FILE_PATTERN); do
+        for file in $(find "$dir" -type f -name "$FILE_PATTERN"); do
             # Check if the file exists and is a regular file
             if [ -e "$file" ]; then
                 echo "uploading: $file"
