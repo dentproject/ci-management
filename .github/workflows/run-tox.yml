@@ -27,7 +27,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: sudo apt-get install libxml2-dev libxslt-dev
-      - name: Run pip install tox
-        run: pip install tox
+      - name: Run pip install tox wheel
+        run: pip install tox wheel
       - name: Run tox
         run: tox

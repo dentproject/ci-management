@@ -36,12 +36,12 @@
             Example: -j8 all
 
     wrappers:
-      - lf-infra-wrappers:
+      - infra-wrappers:
           build-timeout: "{build-timeout}"
           jenkins-ssh-credential: "{jenkins-ssh-credential}"
 
     publishers:
-      - lf-infra-publish
+      - infra-publish
 
 - job-template:
     name: "{project-name}-verify-{stream}"
@@ -52,7 +52,7 @@
     concurrent: true
 
     scm:
-      - lf-infra-github-scm:
+      - infra-github-scm:
           url: "{git-clone-url}{github-org}/{project}"
           refspec: "+refs/pull/*:refs/remotes/origin/pr/*"
           branch: "$sha1"
@@ -60,7 +60,15 @@
           submodule-timeout: "{submodule-timeout}"
           submodule-disable: true
           choosing-strategy: default
+
+    wrappers:
+      - infra-wrappers:
+          build-timeout: "{build-timeout}"
           jenkins-ssh-credential: "{jenkins-ssh-credential}"
+      - credentials-binding:
+          - username-password:
+              credential-id: artifactory
+              variable: NEXUS_CREDS
 
     triggers:
       - github-pull-request:
@@ -87,7 +95,7 @@
       - ".*"
 
     scm:
-      - lf-infra-github-scm:
+      - infra-github-scm:
           url: "{git-clone-url}{github-org}/{project}"
           refspec: ""
           branch: "refs/heads/{branch}"
@@ -95,16 +103,15 @@
           submodule-timeout: "{submodule-timeout}"
           submodule-disable: true
           choosing-strategy: default
-          jenkins-ssh-credential: "{jenkins-ssh-credential}"
 
     wrappers:
-      - lf-infra-wrappers:
+      - infra-wrappers:
           build-timeout: "{build-timeout}"
           jenkins-ssh-credential: "{jenkins-ssh-credential}"
       - credentials-binding:
           - username-password:
-              credential-id: dentos
-              variable: DENTOSUSER
+              credential-id: artifactory
+              variable: NEXUS_CREDS
 
     triggers:
       - timed: "{obj:cron}"

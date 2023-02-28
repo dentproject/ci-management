@@ -14,15 +14,12 @@ echo "---> dentos-build.sh"
 # be careful and verbose
 set -eux -o pipefail
 
-sudo apt-get install -y binfmt-support
+sudo apt-get update
+sudo apt-get install -y binfmt-support sysstat
+sudo systemctl start sysstat
+sudo systemctl enable sysstat
 # Build issue under investigation, commenting for now...
 #bash tools/autobuild/build.sh -9 -b $STREAM ${BUILD_ARGS:-}
 make docker
-
-# Push artifact for the merge job
-if [[ "$JOB_NAME" =~ "merge" ]]; then
-    find "${WORKSPACE}"/builds/amd64/installer/installed/builds/stretch/ -name '*' -type f -exec curl -u "${DENTOSUSER}" -T {} https://nexus.dent.dev/content/repositories/snapshots/org/dent/dentos/ \;
-    find "${WORKSPACE}"/builds/arm64/installer/installed/builds/stretch/ -name '*' -type f -exec curl -u "${DENTOSUSER}" -T {} https://nexus.dent.dev/content/repositories/snapshots/org/dent/dentos/ \;
-fi
 
 echo "---> dentos-build.sh ends"

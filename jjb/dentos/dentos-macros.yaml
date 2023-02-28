@@ -1,0 +1,103 @@
+############
+# BUILDERS #
+############
+
+- builder:
+    name: infra-sysstat
+    builders:
+      - shell: !include-raw:
+          - ../../shell/sysstat.sh
+- builder:
+    name: upload-artifacts
+    builders:
+      - shell: !include-raw:
+          - ../../shell/upload-artifacts.sh
+
+##############
+# PUBLISHERS #
+##############
+
+- publisher:
+    name: infra-publish
+    # infra macro to finish up a build.
+    #
+    # Handles the following:
+    #   - Shipping logs to Nexus logs site repository
+    #   - Cleanup workspace
+    publishers:
+      - postbuildscript:
+          builders:
+            - role: BOTH
+              build-on:
+                - ABORTED
+                - FAILURE
+                - NOT_BUILT
+                - SUCCESS
+                - UNSTABLE
+              build-steps:
+                - infra-sysstat
+          mark-unstable-if-failed: true
+      - postbuildscript:
+          builders:
+            - role: BOTH
+              build-on:
+                - SUCCESS
+              build-steps:
+                - upload-artifacts
+          mark-unstable-if-failed: true
+      - workspace-cleanup:
+          exclude:
+            # Do not clean up *.jenkins-trigger files for jobs that use a
+            # properties file as input for triggering another build.
+            - "**/*.jenkins-trigger"
+          fail-build: false
+
+#######
+# SCM #
+#######
+
+- scm:
+    name: infra-github-scm
+    scm:
+      - git:
+          url: "{url}"
+          refspec: "{refspec}"
+          branches:
+            - "{branch}"
+          skip-tag: true
+          wipe-workspace: true
+          submodule:
+            disable: "{submodule-disable}"
+            recursive: "{submodule-recursive}"
+            timeout: "{submodule-timeout}"
+          choosing-strategy: "{choosing-strategy}"
+
+############
+# WRAPPERS #
+############
+
+- wrapper:
+    name: infra-wrappers-common
+    wrappers:
+      - mask-passwords
+      - timeout:
+          type: absolute
+          timeout: "{build-timeout}"
+          timeout-var: "BUILD_TIMEOUT"
+          fail: true
+      - timestamps
+
+- wrapper:
+    name: infra-wrappers
+    wrappers:
+      - infra-wrappers-common:
+          build-timeout: "{build-timeout}"
+      - config-file-provider:
+          files:
+            - file-id: npmrc
+              target: "$HOME/.npmrc"
+            - file-id: pipconf
+              target: "$HOME/.config/pip/pip.conf"
+      - ssh-agent-credentials:
+          users:
+            - "{jenkins-ssh-credential}"
