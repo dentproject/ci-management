@@ -61,6 +61,15 @@
           submodule-disable: true
           choosing-strategy: default
 
+    wrappers:
+      - infra-wrappers:
+          build-timeout: "{build-timeout}"
+          jenkins-ssh-credential: "{jenkins-ssh-credential}"
+      - credentials-binding:
+          - username-password:
+              credential-id: artifactory
+              variable: NEXUS_CREDS
+
     triggers:
       - github-pull-request:
           trigger-phrase: "^(reverify|recheck)$"
