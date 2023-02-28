@@ -32,11 +32,11 @@ If you require support please contact Servana support. Get support by [submittin
 -   The Jenkins controller is available with read-only access. If you require greater levels of access please contact Servana Support. No access requests are guaranteed and we will seek approvals where necessary from the projects Technical Steering Committee.
 -   The Jenkins controller is integrated with github and signing in will grant read-only access.
 
-**## Commiting**
+## Commiting
 
 All commits must be signed with a GPG key.
 
-**## Pre-commit**
+## Pre-commit
 
 The following checks will run:
 - trailing-whitespace
@@ -45,7 +45,7 @@ The following checks will run:
 - yamllint
 - shellcheck
 
-**### GPG**
+### GPG
 
 1. Create a GPG key set it up as part of your Github account.
 2. Turn on GPG signing for your commits in your local repository. Like this;
