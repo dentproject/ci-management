@@ -4,23 +4,23 @@ default_language_version:
   node: "14.16.0"
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.4.0
     hooks:
       - id: trailing-whitespace
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.2.1
+    rev: v3.0.0-alpha.4
     hooks:
       - id: prettier
         stages: [commit]
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.15.1
+    rev: v0.19.0dev
     hooks:
       - id: gitlint
 
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.26.1
+    rev: v1.29.0
     hooks:
       - id: yamllint
         exclude: >
@@ -29,7 +29,7 @@ repos:
           )$
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.5
+    rev: 3.0.0
     hooks:
       - id: shellcheck
         exclude: >

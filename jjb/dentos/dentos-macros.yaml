@@ -17,7 +17,6 @@
 # PUBLISHERS #
 ##############
 
-
 - publisher:
     name: infra-publish
     # infra macro to finish up a build.
@@ -76,7 +75,6 @@
 ############
 # WRAPPERS #
 ############
-
 
 - wrapper:
     name: infra-wrappers-common
