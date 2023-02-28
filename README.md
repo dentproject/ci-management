@@ -6,15 +6,15 @@ This repo contains the Jenkins JobsDSL scripts for the Dent project.
 
 Servana will continue to support a open and accesible Jenkins service for the DentOS Project.
 
-### Jenkins controller is:
+### Browse Jenkins Controller
 
 - Jenkins Production: https://dent.jenkins.app
 
-### Artifacts are published:
+### Download Artifacts
 
 - Artifacts: https://repos.refinery.dev/service/rest/repository/browse/dent/
 
-## If you have any issues
+## Have any issues?
 
 Get support by [submitting a ticket](https://support.servanamanaged.com/support/tickets/new?ticket_form=request_support). There is a SLA but be assured we will get back to you as soon as possible.
 
@@ -30,7 +30,7 @@ Get support by [submitting a ticket](https://support.servanamanaged.com/support/
 | Multi-Region Disaster Recovery | 8hrs            |
 
 
-## Access/Signup to Jenkins:
+## Access/Signup requests to Jenkins
 
 - The Jenkins controller is avaible with read-only access. If you require greater levels of access please contact Servana Support. No access requests are guaranteed and we will seek approvals where necessary from the projects Technical Steering Committee.
 - The Jenkins controller is integrated with github and signing in will grant read-only access.
