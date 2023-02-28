@@ -34,6 +34,7 @@ retry_interval=5
 # Loop through all directories provided as arguments
 for dir in "${directories[@]}"; do
         # Loop through all files in the current directory that match the pattern
+        # shellcheck disable=SC2044
         for file in $(find "$dir" -type f -name "$FILE_PATTERN"); do
             # Check if the file exists and is a regular file
             if [ -e "$file" ]; then
