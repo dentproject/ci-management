@@ -39,12 +39,12 @@ If you require support please contact Servana support. Get support by [submittin
 3. This repository follows the rules set by [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/). Read the specification before making any commits it is your responsibility to rebase and correct any failed precommit messages.
 4. Finally this repository requires the author of a commit to sign their work. To sign a commit `git commit -S -m 'feat:|chore: the message etc'`
 
-### pre-commit 
+### pre-commit
 
 The following checks will run on each commit:
 
-- trailing-whitespace
-- prettier
-- gitlint
-- yamllint
-- shellcheck
+-   trailing-whitespace
+-   prettier
+-   gitlint
+-   yamllint
+-   shellcheck
