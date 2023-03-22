@@ -14,13 +14,13 @@ This repo contains the Jenkins Job Builder scripts for the Dent project.
 
 -   Snapshots Artifacts:
 
-        1. dentos-merge-2.x   - https://repos.refinery.dev/service/rest/repository/browse/dent/snapshots/org/dent/dentos/dentos-merge-2.x/
+> dentos-merge-2.x   - https://repos.refinery.dev/service/rest/repository/browse/dent/snapshots/org/dent/dentos/dentos-merge-2.x/
 
-        2. dentos-merge-main  - https://repos.refinery.dev/service/rest/repository/browse/dent/snapshots/org/dent/dentos/dentos-merge-main/
+> dentos-merge-main  - https://repos.refinery.dev/service/rest/repository/browse/dent/snapshots/org/dent/dentos/dentos-merge-main/
 
-        3. dentos-verify-2.x  - https://repos.refinery.dev/service/rest/repository/browse/dent/snapshots/org/dent/dentos/dentos-verify-2.x/
+> dentos-verify-2.x  - https://repos.refinery.dev/service/rest/repository/browse/dent/snapshots/org/dent/dentos/dentos-verify-2.x/
 
-        4. dentos-verify-main - https://repos.refinery.dev/service/rest/repository/browse/dent/snapshots/org/dent/dentos/dentos-verify-main/
+> dentos-verify-main - https://repos.refinery.dev/service/rest/repository/browse/dent/snapshots/org/dent/dentos/dentos-verify-main/
 
 ## Have any issues?
 
