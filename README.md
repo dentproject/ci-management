@@ -22,6 +22,10 @@ This repo contains the Jenkins Job Builder scripts for the Dent project.
 
 > dentos-verify-main - https://repos.refinery.dev/service/rest/repository/browse/dent/snapshots/org/dent/dentos/dentos-verify-main/
 
+-   Release Artifacts:
+
+> https://repos.refinery.dev/service/rest/repository/browse/dent/releases/org/dent/
+
 ## Have any issues?
 
 If you require support please contact Servana support. Get support by [submitting a ticket](https://support.servanamanaged.com/support/tickets/new?ticket_form=request_support). We will get back to you as soon as possible.
