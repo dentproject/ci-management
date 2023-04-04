@@ -29,7 +29,7 @@ pipeline {
 }
 
 def buildDentOS(){
-    sh '''
+    sh '''#!/bin/bash
         # be careful and verbose
         set -eux -o pipefail
 
