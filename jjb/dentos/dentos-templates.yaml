@@ -71,6 +71,9 @@
               variable: NEXUS_CREDS
 
     triggers:
+      - github
+      - pollscm:
+          cron: ""
       - github-pull-request:
           trigger-phrase: "^(reverify|recheck)$"
           only-trigger-phrase: false
