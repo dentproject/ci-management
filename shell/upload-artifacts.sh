@@ -26,7 +26,7 @@ upload_file() {
 
 # Set the pattern you want to match for files
 FILE_PATTERN="*DENTOS-HEAD*"
-directories=("${WORKSPACE}/builds/amd64/installer/installed/builds/stretch" "${WORKSPACE}/builds/arm64/installer/installed/builds/stretch")
+directories=("${WORKSPACE}/builds/amd64/installer/installed/builds/stretch" "${WORKSPACE}/builds/arm64/installer/installed/builds/stretch" "${WORKSPACE}/builds/arm64/installer/installed/builds/buster")
 url="https://repos.refinery.dev/repository/dent/snapshots/org/dent/dentos/${JOB_BASE_NAME}/"
 max_retries=3
 retry_interval=5
