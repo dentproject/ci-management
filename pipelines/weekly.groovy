@@ -33,8 +33,10 @@ pipeline {
                 }
                 stage('Publish to Nexus') {
                     steps {
-                        uploadToArtifactory()
-                        getVersions()
+                        script{
+                            uploadToArtifactory()
+                            getVersions()
+                        }
                     }
                 }
             }
@@ -44,7 +46,9 @@ pipeline {
                     label 'regression-test-trigger'
                 }
             steps {
-                triggerRegression()
+                script{
+                    triggerRegression()
+                }
             }
         }
     }
