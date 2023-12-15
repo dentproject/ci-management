@@ -27,6 +27,8 @@ pipeline {
                 stage('Build') {
                     steps {
                         script {
+                            deleteDir()
+                            git branch: 'main', credentialsId: 'dent-github-app', url: 'https://github.com/dentproject/dentOS.git'
                             buildDentOS()
                         }
                     }
