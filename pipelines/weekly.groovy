@@ -4,12 +4,15 @@ pipeline {
     options {
         timestamps()
         ansiColor('xterm')
-        disableConcurrentBuilds()
         buildDiscarder(logRotator(numToKeepStr: '10'))
+        disableConcurrentBuilds()
         lock(resource: "full-regression-suite")
     }
+    triggers {
+        cron('H 0 * * 5')
+    }
     environment {
-        url           = getUrl()
+        url           = "https://repos.refinery.dev/repository/dent/snapshots/org/dent/dentos/dentos-merge-main-weekly/"
         NEXUS_CREDS   = credentials('artifactory')
         TEST_HOST     = "10.36.118.11"
         TEST_USER     = "dent"
@@ -44,14 +47,5 @@ pipeline {
                 triggerRegression()
             }
         }
-    }
-}
-
-def getUrl(){
-    if(BRANCH_NAME.contains('v')) {
-        return "https://repos.refinery.dev/repository/dent/releases/org/dent/${BRANCH_NAME.replaceAll('v','')}/"
-    }
-    else {
-        return "https://repos.refinery.dev/repository/dent/snapshots/org/dent/dentos/dentos-merge-main/"
     }
 }
