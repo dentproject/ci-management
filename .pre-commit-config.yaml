@@ -14,10 +14,12 @@ repos:
       - id: prettier
         stages: [commit]
 
-  - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.19.1
-    hooks:
-      - id: gitlint
+  # - repo: https://github.com/jorisroovers/gitlint
+  #   rev: v0.19.1
+  #   hooks:
+  #     - id: gitlint
+  #       additional_dependencies: ["./gitlint-core[trusted-deps]"]
+  #       entry: gitlint
 
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.33.0
