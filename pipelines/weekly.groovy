@@ -4,7 +4,7 @@ pipeline {
     options {
         timestamps()
         ansiColor('xterm')
-        buildDiscarder(logRotator(numToKeepStr: '10'))
+        buildDiscarder logRotator(artifactDaysToKeepStr: '185', artifactNumToKeepStr: '', daysToKeepStr: '185', numToKeepStr: '')
         disableConcurrentBuilds()
         lock(resource: "full-regression-suite")
     }
