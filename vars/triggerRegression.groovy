@@ -5,7 +5,7 @@ def call(){
             set +e
             ssh -o UserKnownHostsFile=/dev/null \
                 -o StrictHostKeyChecking=no \
-                ${TEST_USER}@${TEST_HOST} \"runDentCi -testSuite fullRegression -builds ${AMD_ARTIFACT_URL} ${ARM_ARTIFACT_URL} -testName jenkinsCI_${RUN_NAME}\"
+                ${TEST_USER}@${TEST_HOST} \"runDentCi -testSuite hw/sit/fullRegression -builds ${AMD_ARTIFACT_URL} ${ARM_ARTIFACT_URL} -testName jenkinsCI_${RUN_NAME}\"
             set -e
             """
         // Know the report path
